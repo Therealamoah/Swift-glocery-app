@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO TAGS -->
+     <meta name="description"
+    content="Swift Mart is a fast grocery app that allows users to shop for groceries quickly and easily from their mobile devices.">
+  <meta name="keywords"
+    content="Swift Mart, grocery app, fast shopping, mobile groceries, online grocery shopping">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Swift Mart APP">
+    <title>Swift APP</title>
+    <!-- Tailwind CSS link -->
+   <script src="https://cdn.tailwindcss.com"></script>
+
+   <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* start from right */
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(0);
+        /* center */
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* fade left */
+      }
+    }
+
+    .animate-slidefade {
+      animation: slidefade 2.5s ease forwards;
+    }
+  </style>
+
+</head>
+<body class="font-sans text-gray-800">
+
+ <!-- Registration Screen -->
+  <div class="min-h-screen flex items-center justify-center p-6">
+      <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-md">
+        <div class="flex justify-between">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart Logo" class="mx-auto mb-4 w-40">
+        
+        </div>
+          <h2 class="text-2xl font-black mb-6 text-center text-black">Create Your Swift Mart Account</h2>
+          <form action="index.html" method="GET" class="space-y-4">
+              <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                  <input type="text" id="name" name="name" required
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+              </div>
+              <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                  <input type="email" id="email" name="email" required
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+              </div>
+              <div>
+                  <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                  <input type="password" id="password" name="password" required
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+              </div>
+              <div>
+                  <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                  <input type="password" id="confirm-password" name="confirm-password" required
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500">
+              </div>
+              <button type="submit"
+                  class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200">Sign Up</button>
+          </form>
+          <p class="mt-4 text-center text-sm text-gray-600">Already have an account?
+              <a href="login.html" class="text-green-600 hover:underline">Log In</a>
+          </p>
+      </div>
+  </div>
+
+
+
+
+
+    
+</body>
+</html>
