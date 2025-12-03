@@ -11,13 +11,400 @@
   <meta name="robots" content="index, follow">
   <meta name="author" content="Swift Mart APP">
     <title>Swift Mart</title>
+    <!-- Tailwind CSS link -->
+   <script src="https://cdn.tailwindcss.com"></script>
     <!-- logo as a favicon -->
     <link rel="icon" type="image/png" href="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png"/>
+    <!-- Font awesome cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+     <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* start from right */
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(0);
+        /* center */
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* fade left */
+      }
+    }
+
+    .animate-slidefade {
+      animation: slidefade 2.5s ease forwards;
+    }
+  </style>
+
 
 </head>
 <body class="font-sans text-gray-800">
+
+       <!-- Preloader Overlay -->
+  <!-- <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+    <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
+  </div> -->
+
+  <!-- Preloder hides -->
+   <script>
+    // function hidePreloaderAndInitAOS() {
+    //       const pre = document.getElementById('preloader');
+    //       // duration must match your animation (2.5s) - tweak if you changed that
+    //       const animationWait = 2500;
+    //       if (!pre) {
+    //         // still ensure AOS is available and init
+    //         ensureAOS(initAOS);
+    //         return;
+    //       }
+
+          // Wait the animation duration, then fade preloader out and init AOS
+        //   setTimeout(() => {
+        //     pre.style.opacity = '0';
+        //     pre.style.transition = 'opacity 0.6s ease';
+        //     setTimeout(() => {
+        //       pre.style.display = 'none';
+        //       ensureAOS(initAOS);
+        //     }, 600);
+        //   }, animationWait);
+        // }
+
+        // if (document.readyState === 'complete') {
+        //   hidePreloaderAndInitAOS();
+        // } else {
+        //   window.addEventListener('load', hidePreloaderAndInitAOS);
+        // }
+
+      
+   </script>
+
+<!-- Nav Bar -->
+ <!-- Bigger screens and meduim screens -->
+  <header>
+    <nav>
+      <div class="hidden lg:block ">
+      <div class="container mx-auto px-4 py-4 flex items-center gap-8 border-gray-900">
+        <div class="text-2xl font-bold text-green-600">
+           <div class="inline-block ml-2">
+            <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart Logo" class="w-16 h-12 object-contain inline-block">
+        </div>
+          <a href="index.html">Swift Mart</a>
+      </div>
+      <div class="inline-block space-x-6 items-center -mt-2">
+          <a href="category.html" class="text-gray-700 font-medium hover:text-green-600 hover:underline">Shop by Category</a>
+          <a href="features.html" class="text-gray-700 font-medium hover:text-green-600 hover:underline">Deals </a>
+          <a href="contact.html" class="text-gray-700 font-medium hover:text-green-600 hover:underline">My list</a>
+        </div>
+
+        <div class="ml-auto flex items-center gap-6 -mt-4">
+          <!-- add to cart logo & user-->
+          <a href="cart.html" class="text-gray-700 hover:text-green-600 relative ">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <span
+              class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+               <div class="ml-auto mt-">
+          <!-- user logo -->
+          <a href="signup.html" class="text-gray-700 hover:text-green-600">
+            <i class="fa-solid fa-user"></i>
+
+             
+        </div>
+        </div>
+        </div>
+       
+    </nav>
+  </header>
+  <!-- Bigger screens  -->
+
+  <!-- Small screens and medium screens & shows the menu links in a bar icon -->
+  <header>
+    <nav>
+      <div class="lg:hidden">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div class="text-2xl font-bold text-green-600">
+            <a href="index.html">
+              <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart Logo" class="w-16 h-12 object-contain inline-block">
+              Swift Mart
+            </a>
+          </div>
+          <div class="flex items-center gap-4">
+            <!-- add to cart logo & user-->
+            <a href="cart.html" class="text-gray-700 hover:text-green-600 relative">
+              <i class="fa-solid fa-basket-shopping"></i>
+              <span
+                class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+            </a>
+            <!-- user logo -->
+            <a href="signup.html" class="text-gray-700 hover:text-green-600">
+              <i class="fa-solid fa-user"></i>
+            </a>
+            <!-- Menu Icon -->
+            <button id="menu-btn" class="text-gray-700 hover:text-green-600 focus:outline-none">
+              <i class="fa-solid fa-bars fa-lg"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- menu function -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const navLinks = document.createElement('div');
+    navLinks.classList.add('mobile-menu', 'hidden', 'bg-white', 'shadow-md', 'p-4');
+
+    navLinks.innerHTML = `
+      <a href="category.html" class="block py-2 text-gray-700 font-medium hover:text-green-600 hover:underline">Shop by Category</a>
+      <a href="features.html" class="block py-2 text-gray-700 font-medium hover:text-green-600 hover:underline">Deals</a>
+      <a href="contact.html" class="block py-2 text-gray-700 font-medium hover:text-green-600 hover:underline">My list</a>
+    `;
+
+    document.body.appendChild(navLinks);
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Hero page section-->
+  <section>
+  <div class="relative bg-cover bg-center text-white py-28 " style="background-image: url('images/img2.jpg')">
     
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     
-     
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h1 class="text-4xl font-black mb-4">Fresh Gloceries , Delivered Fast</h1>
+      <p class="text-lg mb-8">Your favourite local gloceries store, now online. Quality and Convience at your <br> fingertips.</p>
+      <!-- Search for products -->
+      <div class="mt-8">
+        <input type="text" placeholder="Search for products..." class="w-1/2 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+        <button class="bg-white text-green-600 font-semibold px-4 py-2 rounded-md transition duration-200">Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop by Category -->
+ <div>
+  <section>
+    <h1 class="font-bold font-sans text-1g ml-4 mt-4">Shop By Category</h1>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+     <!-- Category 1 -->
+      <div class="p-4">
+          <a href="category.html">
+            <img src="https://i.pinimg.com/736x/56/0e/fa/560efa36c00b3f25ec8fab0fd58a13a9.jpg" alt="Fresh produce" class="w-full h-24 object-cover rounded-md">
+
+          </a>
+          <h2 class="text-center mt-2 font-medium">Fresh Produce</h2>
+        </div>
+        <!-- Category 2 -->
+        <div class="p-4">
+          <a href="category.html">
+            <img src="https://i.pinimg.com/1200x/a2/97/ca/a297caaca573e1ea85623d3061c85a7e.jpg" alt="Vegetables" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-center mt-2 font-medium">Diary & Eggs </h2>
+        </div>
+        <!-- Category 3 -->
+        <div class="p-4">
+          <a href="category.html">
+            <img src="https://i.pinimg.com/1200x/1e/77/a1/1e77a1f4e04d9726a1dfaab42bacd7b6.jpg" alt="Bread" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-center mt-2 font-medium">Dairy</h2>
+        </div>
+        <!-- Category 4 -->
+        <div class="p-4">
+          <a href="category.html">
+            <img src="https://i.pinimg.com/736x/65/44/f4/6544f4bf9562566a7657bb29b4e6054f.jpg" alt="Meat & Sea food" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-center mt-2 font-medium">Meat & Sea food</h2>
+        </div>
+        <!-- Category 5 -->
+        <div class="p-4">
+          <a href="category.html">
+            <img src="https://i.pinimg.com/1200x/79/6c/34/796c34906c9111f02f41a319298a261b.jpg" alt="Beverages" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-center mt-2 font-medium">Beverages</h2>
+        </div>
+        <!-- Category 6 -->
+        <div class="p-4">
+          <a href="category.html">
+            <img src="https://i.pinimg.com/736x/7f/0c/e2/7f0ce26852b57bef985a7440203e3aea.jpg" alt="Snacks" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-center mt-2 font-medium">Snacks</h2>
+        </div>
+
+    </div>
+
+  </section>
+ </div>
+
+ <!-- Recommended for you -->
+  <div>
+    <section>
+      <h1 class="font-bold font-sans text-1g ml-4 mt-4">Recommended for you</h1>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="h-60 p-4 border rounded-md">
+          <a href="products.html">
+            <img src="https://i.pinimg.com/736x/67/ff/04/67ff0431ed4ecbf10ebed90c15eb6d0a.jpg" alt="Organic bananas" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-left mt-2 font-medium">Organic bananas</h2>
+          <p class="text-left mt-2 font-normal">per 1b</p>
+          <p class="text-left mt-2 font-bold">$1.29</p>
+          <!-- Add to cart icon-->
+          <div class="flex ml-28 -mt-8">
+            <button data-id="1" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+         </div>
+      </div>
+      <!-- Category 2 -->
+       <div class="h-60 p-4 border rounded-md">
+          <a href="products.html">
+            <img src="https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg" alt="Strawberries" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-left mt-2 font-medium">Strawberries</h2>
+          <p class="text-left mt-2 font-normal">per 1b</p>
+          <p class="text-left mt-2 font-bold">$2.99</p>
+          <!-- Add to cart icon-->
+          <div class="flex ml-28 -mt-8">
+            <button data-id="2" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+         </div>
+      </div>
+      <!-- Category 3 -->
+       <div class="h-60 p-4 border rounded-md">
+          <a href="products.html">
+            <img src="https://i.pinimg.com/1200x/1d/77/19/1d7719c11f116bddc6a5036b91728b39.jpg" alt="Almond Milk" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-left mt-2 font-medium">Almond Milk</h2>
+          <p class="text-left mt-2 font-normal">per 1L</p>
+          <p class="text-left mt-2 font-bold">$3.49</p>
+          <!-- Add to cart icon-->
+          <div class="flex ml-28 -mt-8">
+            <button data-id="3" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+         </div>
+      </div>
+      <!-- Category 4 -->
+        <div class="h-60 p-4 border rounded-md">
+            <a href="products.html">
+              <img src="https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" alt="Chicken Breast" class="w-full h-24 object-cover rounded-md">
+            </a>
+            <h2 class="text-left mt-2 font-medium">Chicken Breast</h2>
+            <p class="text-left mt-2 font-normal">per 1b</p>
+            <p class="text-left mt-2 font-bold">$5.99</p>
+            <!-- Add to cart icon-->
+            <div class="flex ml-28 -mt-8">
+              <button data-id="4" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+          </div>
+        </div>
+      <!-- Category 5 -->
+        <div class="h-60 p-4 border rounded-md">
+            <a href="products.html">
+              <img src="https://i.pinimg.com/1200x/a6/43/b5/a643b528cf48933b9fd8a250687eb307.jpg" alt="Orange Juice" class="w-full h-24 object-cover rounded-md">
+            </a>
+            <h2 class="text-left mt-2 font-medium">Orange Juice</h2>
+            <p class="text-left mt-2 font-normal">per 1L</p>
+            <p class="text-left mt-2 font-bold">$4.29</p>
+            <!-- Add to cart icon-->
+            <div class="flex ml-28 -mt-8">
+              <button data-id="5" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+          </div>
+        </div>
+      <!-- Category 6 -->
+        <div class="h-60 p-4 border rounded-md">
+            <a href="products.html">
+              <img src="https://i.pinimg.com/1200x/12/81/95/1281953e66f256007e7885b325fb8f66.jpg" alt="Potato Chips" class="w-full h-24 object-cover rounded-md">
+            </a>
+            <h2 class="text-left mt-2 font-medium">Potato Chips</h2>
+            <p class="text-left mt-2 font-normal">per pack</p>
+            <p class="text-left mt-2 font-bold">$1.99</p>
+            <!-- Add to cart icon-->
+            <div class="flex ml-28 -mt-8">
+              <button data-id="6" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+          </div>
+
+    </section>
+  </div>
+
+  <!-- Trending Near You -->
+   <section>
+    <div>
+      <h1 class="font-bold font-sans text-1g ml-4 mt-4">Trending Near You</h1>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="h-60 p-4 border rounded-md">
+          <a href="products.html">
+            <img src="https://i.pinimg.com/736x/ad/8b/42/ad8b42968a7c85d288d4258aad5e0911.jpg" alt="Oat Milk" class="w-full h-24 object-cover rounded-md">
+          </a>
+          <h2 class="text-left mt-2 font-medium">Oat Milk</h2>
+          <p class="text-left mt-2 font-normal">per 1b</p>
+          <p class="text-left mt-2 font-bold">$5.29</p>
+          <!-- Add to cart icon-->
+          <div class="flex ml-28 -mt-8">
+            <button data-id="1" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+         </div>
+      </div>
+
+      <!-- Category 2 -->
+        <div class="h-60 p-4 border rounded-md">
+            <a href="products.html">
+              <img src="https://i.pinimg.com/1200x/2a/9e/f3/2a9ef3385919f75bb6b9ca3cbe561ef5.jpg" alt="Grapes" class="w-full h-24 object-cover rounded-md">
+            </a>
+            <h2 class="text-left mt-2 font-medium">Grapes</h2>
+            <p class="text-left mt-2 font-normal">per 1b</p>
+            <p class="text-left mt-2 font-bold">$2.49</p>
+            <!-- Add to cart icon-->
+            <div class="flex ml-28 -mt-8">
+              <button data-id="2" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+          </div>
+
+    </div>
+    <!-- category 3 -->
+        <div class="h-60 p-4 border rounded-md">
+            <a href="products.html">
+              <img src="https://i.pinimg.com/1200x/ae/1b/7e/ae1b7e2f3f3f4f4f4f4f4f4f4f4f4f4f.jpg" alt="Yogurt" class="w-full h-24 object-cover rounded-md">
+            </a>
+            <h2 class="text-left mt-2 font-medium">Yogurt</h2>
+            <p class="text-left mt-2 font-normal">per 1b</p>
+            <p class="text-left mt-2 font-bold">$0.99</p>
+            <!-- Add to cart icon-->
+            <div class="flex ml-28 -mt-8">
+              <button data-id="3" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+          </div>
+        </div>
+
+   </section>
+
+<script src="style.js"></script>
 </body>
 </html>
