@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Swift Mart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .payment-method { transition: all 0.3s; cursor: pointer; }
+    .payment-method:hover { background-color: #f0fdf4; }
+    .payment-method.selected {
+      border-color: #22c55e !important;
+      background-color: #f0fdf4;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+    }
+    .payment-input { transition: all 0.2s; }
+    .payment-input:focus { transform: scale(1.02); box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2); }
+  </style>
+
+  <style>
+        @keyframes slidefade {
+            0% { opacity: 0; transform: translateX(100px); }
+            50% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(-100px); }
+        }
+        .animate-slidefade {
+            animation: slidefade 2.5s ease forwards;
+        }
+    </style>
+
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+     <!-- Preloader Overlay -->
+  <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+    <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
+  </div>
+
+  <!-- Preloder hides -->
+   <script>
+    function hidePreloaderAndInitAOS() {
+          const pre = document.getElementById('preloader');
+          // duration must match your animation (2.5s) - tweak if you changed that
+          const animationWait = 2500;
+          if (!pre) {
+            // still ensure AOS is available and init
+            ensureAOS(initAOS);
+            return;
+          }
+
+          // Wait the animation duration, then fade preloader out and init AOS
+          setTimeout(() => {
+            pre.style.opacity = '0';
+            pre.style.transition = 'opacity 0.6s ease';
+            setTimeout(() => {
+              pre.style.display = 'none';
+              ensureAOS(initAOS);
+            }, 600);
+          }, animationWait);
+        }
+
+        if (document.readyState === 'complete') {
+          hidePreloaderAndInitAOS();
+        } else {
+          window.addEventListener('load', hidePreloaderAndInitAOS);
+        }
+
+      
+   </script>
+
+
+  <div class="container mx-auto px-4 py-8 max-w-6xl">
+    <div class="flex items-center justify-between mb-10">
+      <h1 class="text-3xl font-bold text-green-700">Checkout</h1>
+      <a href="cart.html" class="text-green-600 hover:underline flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i> Back to Cart
+      </a>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10">
+      <!-- Left: Checkout Form -->
+      <div class="space-y-8">
+
+        <!-- Contact Info -->
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-2xl font-bold mb-5 flex items-center gap-3">
+            <span class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-lg">1</span>
+            Contact Information
+          </h2>
+          <div class="grid grid-cols-2 gap-4">
+            <input type="text" id="firstName" placeholder="First Name" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" id="lastName" placeholder="Last Name" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="email" id="email" placeholder="Email" required class="col-span-2 w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="tel" id="phone" placeholder="Phone Number" required class="col-span-2 w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+          </div>
+        </div>
+
+        <!-- Shipping Address -->
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-2xl font-bold mb-5 flex items-center gap-3">
+            <span class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-lg">2</span>
+            Shipping Address
+          </h2>
+          <div class="space-y-4">
+            <input type="text" id="address" placeholder="Street Address" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" id="apartment" placeholder="Apartment, suite, etc. (optional)" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <div class="grid grid-cols-2 gap-4">
+              <input type="text" id="city" placeholder="City" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+              <input type="text" id="zip" placeholder="ZIP Code" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <select id="country" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+              <option value="">Select Country</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+              <option value="UK">United Kingdom</option>
+              <option value="GH">Ghana</option>
+              <option value="NG">Nigeria</option>
+              <option value="KE">Kenya</option>
+              <option value="ZA">South Africa</option>
+              <option value="IN">India</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h2 class="text-2xl font-bold mb-5 flex items-center gap-3">
+            <span class="w-10 h-10 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-lg">3</span>
+            Payment Method
+          </h2>
+
+          <!-- Payment Options -->
+          <div class="space-y-4">
+
+            <!-- Credit/Debit Card -->
+            <div class="payment-method p-5 border-2 border-gray-300 rounded-xl flex items-center gap-4 selected" data-method="card">
+              <i class="fa-solid fa-credit-card text-2xl text-green-600"></i>
+              <div class="flex-1">
+                <div class="font-semibold">Credit / Debit Card</div>
+                <div class="text-sm text-gray-500">Visa, Mastercard, Amex</div>
+              </div>
+              <div class="w-6 h-6 border-2 border-green-600 rounded-full flex items-center justify-center">
+                <div class="w-3 h-3 bg-green-600 rounded-full"></div>
+              </div>
+            </div>
+
+            <!-- Mobile Money (Momo) -->
+            <div class="payment-method p-5 border-2 border-gray-300 rounded-xl flex items-center gap-4" data-method="momo">
+              <i class="fa-solid fa-mobile-alt text-2xl text-orange-600"></i>
+              <div class="flex-1">
+                <div class="font-semibold">Mobile Money (Momo)</div>
+                <div class="text-sm text-gray-500">MTN, Vodafone, AirtelTigo, Telecel</div>
+              </div>
+            </div>
+
+            <!-- Apple Pay (only shown on Apple devices) -->
+            <div class="payment-method p-5 border-2 border-gray-300 rounded-xl flex items-center gap-4 hidden" id="apple-pay-option" data-method="applepay">
+              <i class="fa-brands fa-apple text-3xl"></i>
+              <div class="flex-1">
+                <div class="font-semibold text-black">Apple Pay</div>
+                <div class="text-sm text-gray-500">Pay faster with Apple Pay</div>
+              </div>
+              <div class="apple-pay-button apple-pay-button-black hidden" style="-webkit-appearance: -apple-pay-button; height: 40px; width: 100%;"></div>
+            </div>
+
+          </div>
+
+          <!-- Card Details (shown only when card is selected) -->
+          <div id="card-details" class="mt-6 space-y-4">
+            <input type="text" id="cardNumber" placeholder="Card Number • 4242 4242 4242 4242" maxlength="19" class="payment-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <input type="text" id="cardName" placeholder="Name on Card" class="payment-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <div class="grid grid-cols-2 gap-4">
+              <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" class="payment-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+              <input type="text" id="cvc" placeholder="CVC" maxlength="4" class="payment-input w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm">
+              <strong>Demo:</strong> Use <code class="bg-amber-200 px-2 py-1 rounded">4242 4242 4242 4242</code> • Any future date • Any 3-digit CVC
+            </div>
+          </div>
+
+          <!-- Momo Details (shown when Momo is selected) -->
+          <div id="momo-details" class="mt-6 space-y-4 hidden">
+            <div class="p-6 bg-gradient-to-r from-orange-50 to-yellow-50 border-2 border-orange-300 rounded-xl text-center">
+              <i class="fa-solid fa-mobile-screen-button text-5xl text-orange-600 mb-4"></i>
+              <h3 class="text-xl font-bold text-orange-800">Pay with Mobile Money</h3>
+              <p class="text-gray-700 mt-2">You will receive a prompt on your phone to approve payment</p>
+            </div>
+            <input type="tel" id="momo-phone" placeholder="Enter Mobile Money Number (e.g. 0241234567)" class="w-full px-4 py-3 border-2 border-orange-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg font-medium">
+            <select id="momo-network" class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+              <option value="">Select Network</option>
+              <option value="mtn">MTN MoMo</option>
+              <option value="vodafone">Vodafone Cash</option>
+              <option value="airteltigo">AirtelTigo Money</option>
+              <option value="telecel">Telecel Cash</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Order Summary -->
+      <div class="space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow-md sticky top-6">
+          <h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+          <div id="order-items" class="space-y-4 max-h-96 overflow-y-auto"></div>
+
+          <div class="border-t mt-6 pt-6 space-y-3">
+            <div class="flex justify-between text-lg">
+              <span>Subtotal</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Shipping</span>
+              <span class="text-green-600 font-medium">FREE</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Tax (8%)</span>
+              <span id="tax">$0.00</span>
+            </div>
+            <div class="border-t pt-4">
+              <div class="flex justify-between text-2xl font-bold text-green-700">
+                <span>Total</span>
+                <span id="total">$0.00</span>
+              </div>
+            </div>
+          </div>
+
+          <button id="place-order-btn" class="w-full mt-8 bg-green-600 text-white py-5 rounded-xl text-xl font-bold hover:bg-green-700 transition transform hover:scale-105 shadow-lg flex items-center justify-center gap-3">
+            <i class="fa-solid fa-lock"></i>
+            <span id="pay-text">Place Order</span>
+          </button>
+        </div>
+
+        <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+          <div class="flex gap-4">
+            <i class="fa-solid fa-shield-halved text-3xl text-blue-600"></i>
+            <div>
+              <h3 class="font-bold text-blue-900">100% Secure Checkout</h3>
+              <p class="text-sm text-blue-700">Your information is encrypted and safe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-10 text-center max-w-md transform scale-0 transition-all duration-300" id="modal-content">
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <i class="fa-solid fa-check text-4xl text-green-600"></i>
+      </div>
+      <h2 class="text-3xl font-bold mb-4">Order Placed Successfully!</h2>
+      <p class="text-gray-600 mb-8">Thank you for shopping with Swift Mart. Your order is confirmed.</p>
+      <a href="index.html" class="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition inline-block">Continue Shopping</a>
+    </div>
+  </div>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      window.location.href = "cart.html";
+    }
+
+    // Render items
+    const orderItemsEl = document.getElementById('order-items');
+    let subtotal = 0;
+    cart.forEach(item => {
+      subtotal += item.price * item.quantity;
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-4 pb-4 border-b last:border-0';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+        <div class="flex-1">
+          <h4 class="font-medium">${item.name}</h4>
+          <p class="text-sm text-gray-500">Qty: ${item.quantity}</p>
+        </div>
+        <span class="font-semibold">$${(item.price * item.quantity).toFixed(2)}</span>
+      `;
+      orderItemsEl.appendChild(div);
+    });
+
+    const tax = subtotal * 0.08;
+    const total = subtotal + tax;
+    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+    document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+
+    // Payment method switching
+    document.querySelectorAll('.payment-method').forEach(method => {
+      method.addEventListener('click', () => {
+        document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected', 'border-green-600'));
+        method.classList.add('selected', 'border-green-600');
+        
+        const methodType = method.dataset.method;
+        document.getElementById('card-details').classList.toggle('hidden', methodType !== 'card');
+        document.getElementById('momo-details').classList.toggle('hidden', methodType !== 'momo');
+
+        const payText = document.getElementById('pay-text');
+        if (methodType === 'momo') payText.textContent = "Pay with Mobile Money";
+        else if (methodType === 'applepay') payText.textContent = "Pay with Apple Pay";
+        else payText.textContent = "Place Order";
+      });
+    });
+
+    // Apple Pay detection
+    if (window.ApplePaySession && ApplePaySession.canMakePayments()) {
+      document.getElementById('apple-pay-option').classList.remove('hidden');
+    }
+
+    // Validation & Place Order
+    document.getElementById('place-order-btn').addEventListener('click', () => {
+      const required = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'zip', 'country'];
+      let valid = true;
+
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.classList.add('border-red-500');
+          valid = false;
+        } else {
+          el.classList.remove('border-red-500');
+        }
+      });
+
+      const selectedMethod = document.querySelector('.payment-method.selected').dataset.method;
+      if (selectedMethod === 'momo') {
+        if (!document.getElementById('momo-phone').value.trim() || !document.getElementById('momo-network').value) {
+          alert("Please enter your Mobile Money number and select network.");
+          return;
+        }
+      }
+
+      if (!valid) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      // Simulate success
+      setTimeout(() => {
+        localStorage.removeItem('swiftCart');
+        document.getElementById('success-modal').classList.remove('hidden');
+        document.getElementById('modal-content').classList.remove('scale-0');
+      }, 1200);
+    });
+
+    // Card formatting
+    document.getElementById('cardNumber').addEventListener('input', e => {
+      let v = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+      let parts = [];
+      for (let i = 0; i < v.length; i += 4) parts.push(v.substring(i, i + 4));
+      e.target.value = parts.join(' ');
+    });
+
+    document.getElementById('expiry').addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g, '');
+      if (v.length >= 3) e.target.value = v.slice(0, 2) + '/' + v.slice(2, 4);
+    });
+  </script>
+</body>
+</html>

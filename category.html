@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO TAGS -->
+     <meta name="description"
+    content="Swift Mart is a fast grocery app that allows users to shop for groceries quickly and easily from their mobile devices.">
+  <meta name="keywords"
+    content="Swift Mart, grocery app, fast shopping, mobile groceries, online grocery shopping">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Swift Mart APP">
+    <title>Shop by Category</title>
+    <!-- Tailwind CSS link -->
+   <script src="https://cdn.tailwindcss.com"></script>
+
+   <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   <!-- logo as a favicon -->
+    <link rel="icon" type="image/png" href="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png"/>
+
+   <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* start from right */
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(0);
+        /* center */
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* fade left */
+      }
+    }
+
+    .animate-slidefade {
+      animation: slidefade 2.5s ease forwards;
+    }
+  </style>
+
+</head>
+<body class="font-sans text-gray-800">
+     <!-- Preloader Overlay -->
+  <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+    <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
+  </div>
+
+  <!-- Preloder hides -->
+   <script>
+    function hidePreloaderAndInitAOS() {
+          const pre = document.getElementById('preloader');
+          // duration must match your animation (2.5s) - tweak if you changed that
+          const animationWait = 2500;
+          if (!pre) {
+            // still ensure AOS is available and init
+            ensureAOS(initAOS);
+            return;
+          }
+
+          // Wait the animation duration, then fade preloader out and init AOS
+          setTimeout(() => {
+            pre.style.opacity = '0';
+            pre.style.transition = 'opacity 0.6s ease';
+            setTimeout(() => {
+              pre.style.display = 'none';
+              ensureAOS(initAOS);
+            }, 600);
+          }, animationWait);
+        }
+
+        if (document.readyState === 'complete') {
+          hidePreloaderAndInitAOS();
+        } else {
+          window.addEventListener('load', hidePreloaderAndInitAOS);
+        }
+
+      
+   </script>
+
+   <!-- shop by Categories -->
+    <!-- NAVBAR (Same as index.html) -->
+  <header class="bg-white shadow-sm border-b sticky top-0 z-40">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart" class="w-14 h-12 object-contain">
+        <span class="text-2xl font-bold text-green-600">Swift Mart</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="font-medium hover:text-green-600">Home</a>
+        <a href="category.html" class="font-bold text-green-600 underline">Categories</a>
+        <a href="features.html" class="font-medium hover:text-green-600">Deals</a>
+        <a href="myitems.html" class="font-medium hover:text-green-600">My List</a>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="cart.html" class="relative text-2xl hover:text-green-600">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-badge absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">0</span>
+        </a>
+        <a href="signup.html" class="text-2xl hover:text-green-600">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden">
+    <a href="index.html" class="block py-3 px-6 hover:bg-gray-100">Home</a>
+    <a href="category.html" class="block py-3 px-6 bg-green-50 font-bold">Categories</a>
+    <a href="features.html" class="block py-3 px-6 hover:bg-gray-100">Deals</a>
+    <a href="myitems.html" class="block py-3 px-6 hover:bg-gray-100">My List</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative bg-gradient-to-r from-green-600 to-green-800 text-white py-20 bg-cover bg-center" style="background-image: url('images/img2.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-45"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Shop by Category</h1>
+      <p class="text-xl">Find everything you need, organized just for you</p>
+    </div>
+  </section>
+
+  <!-- CATEGORIES GRID -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
+
+      <!-- Category 1 -->
+      <a href="#" onclick="showCategory('Fresh Produce')" class="category-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 text-center group">
+        <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 p-6">
+          <img src="https://i.pinimg.com/736x/56/0e/fa/560efa36c00b3f25ec8fab0fd58a13a9.jpg" alt="Fresh Produce" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg">Fresh Produce</h3>
+          <p class="text-gray-600 text-sm">Fruits & Vegetables</p>
+        </div>
+      </a>
+
+      <!-- Category 2 -->
+      <a href="#" onclick="showCategory('Dairy & Eggs')" class="category-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 text-center group">
+        <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 p-6">
+          <img src="https://i.pinimg.com/1200x/a2/97/ca/a297caaca573e1ea85623d3061c85a7e.jpg" alt="Dairy & Eggs" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg">Dairy & Eggs</h3>
+          <p class="text-gray-600 text-sm">Milk, Cheese, Yogurt</p>
+        </div>
+      </a>
+
+      <!-- Category 3 -->
+      <a href="#" onclick="showCategory('Meat & Seafood')" class="category-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 text-center group">
+        <div class="h-48 bg-gradient-to-br from-red-100 to-red-200 p-6">
+          <img src="https://i.pinimg.com/736x/65/44/f4/6544f4bf9562566a7657bb29b4e6054f.jpg" alt="Meat & Seafood" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg">Meat & Seafood</h3>
+          <p class="text-gray-600 text-sm">Chicken, Fish, Beef</p>
+        </div>
+      </a>
+
+      <!-- Category 4 -->
+      <a href="#" onclick="showCategory('Beverages')" class="category-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 text-center group">
+        <div class="h-48 bg-gradient-to-br from-cyan-100 to-cyan-200 p-6">
+          <img src="https://i.pinimg.com/1200x/79/6c/34/796c34906c9111f02f41a319298a261b.jpg" alt="Beverages" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg">Beverages</h3>
+          <p class="text-gray-600 text-sm">Water, Juice, Soda</p>
+        </div>
+      </a>
+
+      <!-- Category 5 -->
+      <a href="#" onclick="showCategory('Snacks')" class="category-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 text-center group">
+        <div class="h-48 bg-gradient-to-br from-yellow-100 to-yellow-200 p-6">
+          <img src="https://i.pinimg.com/736x/7f/0c/e2/7f0ce26852b57bef985a7440203e3aea.jpg" alt="Snacks" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg">Snacks</h3>
+          <p class="text-gray-600 text-sm">Chips, Cookies, Nuts</p>
+        </div>
+      </a>
+
+      <!-- Category 6 -->
+      <a href="#" onclick="showCategory('Bakery')" class="category-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300 text-center group">
+        <div class="h-48 bg-gradient-to-br from-amber-100 to-amber-200 p-6">
+          <img src="https://i.pinimg.com/1200x/1e/77/a1/1e77a1f4e04d9726a1dfaab42bacd7b6.jpg" alt="Bakery" class="w-full h-full object-cover rounded-xl group-hover:scale-110 transition">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-lg">Bakery</h3>
+          <p class="text-gray-600 text-sm">Bread, Cakes, Pastries</p>
+        </div>
+      </a>
+
+      <!-- Add more categories as needed -->
+
+    </div>
+  </section>
+
+  <!-- PRODUCTS BY CATEGORY (Hidden by default) -->
+  <section id="category-products" class="container mx-auto px-4 py-12 hidden">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-3xl font-bold">All <span id="current-category">Fresh Produce</span></h2>
+      <button onclick="backToCategories()" class="text-green-600 hover:underline flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i> Back to Categories
+      </button>
+    </div>
+    <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      <!-- Products will be injected here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="flex flex-col items-center justify-center p-4">
+          <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Shop Logo" class="w-24 h-16 object-contain mb-4">
+         </div>
+
+         <!-- Ccompany -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Company</h3>
+            <a href="about.html" class="text-gray-600 hover:text-green-600 mb-1">About Us</a>
+            <a href="careers.html" class="text-gray-600 hover:text-green-600 mb-1">Careers</a>
+            <a href="blog.html" class="text-gray-600 hover:text-green-600 mb-1">Blog</a>
+          </div>
+
+          <!-- Support -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Support</h3>
+            <a href="help.html" class="text-gray-600 hover:text-green-600 mb-1">Help Center</a>
+            <a href="contact.html" class="text-gray-600 hover:text-green-600 mb-1">Contact Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-green-600 mb-1">FAQ</a>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Newsletter</h3>
+            <p class="text-gray-600 mb-2">Subscribe to our newsletter for the latest updates.</p>
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 mb-2">
+            <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Subscribe</button>
+
+
+
+      </div>
+    </footer>
+
+
+  <script>
+    // Products Database
+    const productsByCategory = {
+      "Fresh Produce": [
+        { id: "101", name: "Organic Bananas", price: 1.29, img: "https://i.pinimg.com/736x/67/ff/04/67ff0431ed4ecbf10ebed90c15eb6d0a.jpg" },
+        { id: "102", name: "Strawberries", price: 2.99, img: "https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg" },
+        { id: "103", name: "Avocado", price: 1.79, img: "https://domf5oio6qrcr.cloudfront.net/medialibrary/16762/conversions/gettyimages-961101662-thumb.jpg" },
+        { id: "104", name: "Grapes", price: 2.49, img: "https://i.pinimg.com/1200x/2a/9e/f3/2a9ef3385919f75bb6b9ca3cbe561ef5.jpg" }
+      ],
+      "Dairy & Eggs": [
+        { id: "201", name: "Almond Milk", price: 3.49, img: "https://i.pinimg.com/1200x/1d/77/19/1d7719c11f116bddc6a5036b91728b39.jpg" },
+        { id: "202", name: "Oat Milk", price: 5.29, img: "https://i.pinimg.com/736x/ad/8b/42/ad8b42968a7c85d288d4258aad5e0911.jpg" },
+        { id: "203", name: "Yogurt", price: 0.99, img: "https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg" }
+      ],
+      "Meat & Seafood": [
+        { id: "301", name: "Chicken Breast", price: 5.99, img: "https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" },
+        { id: "302", name: "Salmon Fillet", price: 8.99, img: "https://i.pinimg.com/1200x/d9/f6/81/d9f6817169c42d2b7af0074a78c6b783.jpg" }
+      ],
+      "Beverages": [
+        { id: "401", name: "Orange Juice", price: 3.99, img: "https://upload.wikimedia.org/wikipedia/commons/0/05/Orangejuice.jpg" },
+        { id: "402", name: "Coca Cola", price: 1.49, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3M-xR4PTf-oldWP8s2UWBCDxtZatNqXs1NA&s" }
+      ],
+      "Snacks": [
+        { id: "501", name: "Potato Chips", price: 2.49, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpnNdkrXoCQot5DrIfuQtvx_EzMDG7FGmIkA&s" }
+      ],
+      "Bakery": [
+        { id: "601", name: "Whole Wheat Bread", price: 2.99, img: "https://i.pinimg.com/1200x/1e/77/a1/1e77a1f4e04d9726a1dfaab42bacd7b6.jpg" }
+      ]
+    };
+
+    function showCategory(categoryName) {
+      document.querySelector('main')?.remove();
+      document.getElementById('category-products').classList.remove('hidden');
+      document.getElementById('current-category').textContent = categoryName;
+
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = '';
+
+      const items = productsByCategory[categoryName] || [];
+      items.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">${p.name}</h3>
+            <div class="flex justify-between items-center mt-4">
+              <span class="text-2xl font-bold text-green-600">$${p.price}</span>
+              <button onclick="addToCart('${p.id}', '${p.name}', '${p.price}', '${p.img}')"
+                class="bg-green-600 text-white w-12 h-12 rounded-full hover:bg-green-700 transition">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function backToCategories() {
+      document.getElementById('category-products').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mobile menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Cart functions (same as index.html)
+    window.addToCart = function(id, name, price, img) {
+      let cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+      const existing = cart.find(item => item.id === id);
+      if (existing) existing.quantity += 1;
+      else cart.push({ id, name, price: parseFloat(price), img, quantity: 1 });
+      localStorage.setItem('swiftCart', JSON.stringify(cart));
+
+      document.querySelectorAll('.cart-badge').forEach(b => {
+        b.textContent = cart.length;
+        b.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+
+      alert(name + " added to cart!");
+    };
+
+    // Update cart badge on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+      document.querySelectorAll('.cart-badge').forEach(b => {
+        b.textContent = cart.length;
+        b.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

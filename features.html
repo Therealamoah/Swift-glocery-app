@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hot Deals - Swift Mart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <!-- logo as a favicon -->
+    <link rel="icon" type="image/png" href="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png"/>
+   <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .deal-card:hover { transform: translateY(-10px); }
+    .countdown { font-weight: 800; letter-spacing: 2px; }
+    .strikethrough { text-decoration: line-through; opacity: 0.6; }
+  </style>
+  <style>
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* start from right */
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(0);
+        /* center */
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* fade left */
+      }
+    }
+
+    .animate-slidefade {
+      animation: slidefade 2.5s ease forwards;
+    }
+  </style>
+
+</head>
+<body class="bg-gray-50">
+     <!-- Preloader Overlay -->
+  <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+    <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
+  </div>
+
+  <!-- Preloder hides -->
+   <script>
+    function hidePreloaderAndInitAOS() {
+          const pre = document.getElementById('preloader');
+          // duration must match your animation (2.5s) - tweak if you changed that
+          const animationWait = 2500;
+          if (!pre) {
+            // still ensure AOS is available and init
+            ensureAOS(initAOS);
+            return;
+          }
+
+          // Wait the animation duration, then fade preloader out and init AOS
+          setTimeout(() => {
+            pre.style.opacity = '0';
+            pre.style.transition = 'opacity 0.6s ease';
+            setTimeout(() => {
+              pre.style.display = 'none';
+              ensureAOS(initAOS);
+            }, 600);
+          }, animationWait);
+        }
+
+        if (document.readyState === 'complete') {
+          hidePreloaderAndInitAOS();
+        } else {
+          window.addEventListener('load', hidePreloaderAndInitAOS);
+        }
+
+      
+   </script>
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow-md border-b  top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart" class="w-14 h-12 object-contain">
+        <span class="text-2xl font-bold text-green-600">Swift Mart</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="font-medium hover:text-green-600">Home</a>
+        <a href="category.html" class="font-medium hover:text-green-600">Categories</a>
+        <a href="deals.html" class="font-bold text-green-600 underline">Deals</a>
+        <a href="myitems.html" class="font-medium hover:text-green-600">My List</a>
+      </nav>
+
+      <div class="flex items-center gap-6">
+        <a href="cart.html" class="relative text-2xl hover:text-green-600">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-badge absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">0</span>
+        </a>
+        <a href="signup.html" class="text-2xl hover:text-green-600">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden border-b">
+    <a href="index.html" class="block py-3 px-6 hover:bg-gray-100">Home</a>
+    <a href="category.html" class="block py-3 px-6 hover:bg-gray-100">Categories</a>
+    <a href="deals.html" class="block py-3 px-6 bg-green-50 font-bold">Deals</a>
+    <a href="myitems.html" class="block py-3 px-6 hover:bg-gray-100">My List</a>
+  </div>
+
+  <!-- HERO BANNER -->
+<section class="relative text-white py-20" style="background-image: url('images/img2.jpg'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative container mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-black mb-4">Flash Deals</h1>
+        <p class="text-2xl font-bold">Limited Time Only – Grab Them Before They're Gone!</p>
+        <div class="mt-6 flex justify-center">
+            <div class="bg-white text-red-600 px-8 py-4 rounded-full text-3xl font-black animate-pulse">
+                Up to 60% OFF
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- DEALS GRID -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+      <!-- Deal 1 -->
+      <div class="deal-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300">
+        <div class="relative">
+          <img src="https://i.pinimg.com/736x/67/ff/04/67ff0431ed4ecbf10ebed90c15eb6d0a.jpg" alt="Organic Bananas" class="w-full h-64 object-cover">
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg">-50%</div>
+          <div class="absolute top-4 right-4 bg-orange-500 text-white px-4 py-2 rounded-full font-bold">
+            <i class="fa-solid fa-bolt"></i> Flash Sale
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Organic Bananas</h3>
+          <p class="text-gray-600">1 lb • Fresh & Sweet</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-3xl font-black text-green-600">$0.64</span>
+            <span class="strikethrough text-lg">$1.29</span>
+          </div>
+          <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600 mb-2">Ends in:</p>
+            <div class="countdown text-2xl text-red-600" data-end="2025-12-05T23:59:59">00:00:00</div>
+          </div>
+          <button onclick="addToCart('d1','Organic Bananas',0.64,'https://i.pinimg.com/736x/67/ff/04/67ff0431ed4ecbf10ebed90c15eb6d0a.jpg')" 
+            class="w-full mt-6 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-3">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Deal 2 -->
+      <div class="deal-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300">
+        <div class="relative">
+          <img src="https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg" alt="Strawberries" class="w-full h-64 object-cover">
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg">-40%</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Fresh Strawberries</h3>
+          <p class="text-gray-600">1 lb • Juicy & Red</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-3xl font-black text-green-600">$1.79</span>
+            <span class="strikethrough text-lg">$2.99</span>
+          </div>
+          <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600 mb-2">Ends in:</p>
+            <div class="countdown text-2xl text-red-600" data-end="2025-12-06T12:00:00">00:00:00</div>
+          </div>
+          <button onclick="addToCart('d2','Fresh Strawberries',1.79,'https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg')" 
+            class="w-full mt-6 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-3">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Deal 3 -->
+      <div class="deal-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300">
+        <div class="relative">
+          <img src="https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" alt="Chicken Breast" class="w-full h-64 object-cover">
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg">-35%</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Chicken Breast</h3>
+          <p class="text-gray-600">Per lb • Fresh Cut</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-3xl font-black text-green-600">$3.89</span>
+            <span class="strikethrough text-lg">$5.99</span>
+          </div>
+          <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600 mb-2">Ends in:</p>
+            <div class="countdown text-2xl text-red-600" data-end="2025-12-05T20:00:00">00:00:00</div>
+          </div>
+          <button onclick="addToCart('d3','Chicken Breast',3.89,'https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg')" 
+            class="w-full mt-6 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-3">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Deal 4 -->
+      <div class="deal-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300">
+        <div class="relative">
+          <img src="https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg" alt="Greek Yogurt" class="w-full h-64 object-cover">
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg">-60%</div>
+          <div class="absolute top-4 right-4 bg-orange-500 text-white px-4 py-2 rounded-full font-bold">
+            <i class="fa-solid fa-fire"></i> Hot!
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold">Greek Yogurt Pack</h3>
+          <p class="text-gray-600">6 x 150g • Low Fat</p>
+          <div class="mt-4 flex items-center gap-3">
+            <span class="text-3xl font-black text-green-600">$1.99</span>
+            <span class="strikethrough text-lg">$4.99</span>
+          </div>
+          <div class="mt-4 text-center">
+            <p class="text-sm text-gray-600 mb-2">Ends in:</p>
+            <div class="countdown text-2xl text-red-600" data-end="2025-12-05T18:00:00">00:00:00</div>
+          </div>
+          <button onclick="addToCart('d4','Greek Yogurt Pack',1.99,'https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg')" 
+            class="w-full mt-6 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-3">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Add more deals here if you want! -->
+
+    </div>
+  </section>
+
+   <!-- Footer -->
+    <footer>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="flex flex-col items-center justify-center p-4">
+          <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Shop Logo" class="w-24 h-16 object-contain mb-4">
+         </div>
+
+         <!-- Ccompany -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Company</h3>
+            <a href="about.html" class="text-gray-600 hover:text-green-600 mb-1">About Us</a>
+            <a href="careers.html" class="text-gray-600 hover:text-green-600 mb-1">Careers</a>
+            <a href="blog.html" class="text-gray-600 hover:text-green-600 mb-1">Blog</a>
+          </div>
+
+          <!-- Support -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Support</h3>
+            <a href="help.html" class="text-gray-600 hover:text-green-600 mb-1">Help Center</a>
+            <a href="contact.html" class="text-gray-600 hover:text-green-600 mb-1">Contact Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-green-600 mb-1">FAQ</a>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Newsletter</h3>
+            <p class="text-gray-600 mb-2">Subscribe to our newsletter for the latest updates.</p>
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 mb-2">
+            <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Subscribe</button>
+
+
+
+      </div>
+    </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Countdown Timer
+    function startCountdowns() {
+      document.querySelectorAll('.countdown').forEach(el => {
+        const endTime = new Date(el.dataset.end).getTime();
+
+        const timer = setInterval(() => {
+          const now = new Date().getTime();
+          const distance = endTime - now;
+
+          if (distance < 0) {
+            el.innerHTML = "EXPIRED";
+            el.classList.add('text-gray-500');
+            clearInterval(timer);
+            return;
+          }
+
+          const hours = Math.floor(distance / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          el.innerHTML = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        }, 1000);
+      });
+    }
+
+    // Add to Cart (same as your other pages)
+    window.addToCart = function(id, name, price, img) {
+      let cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price), img, quantity: 1 });
+      }
+      localStorage.setItem('swiftCart', JSON.stringify(cart));
+
+      // Update badge
+      document.querySelectorAll('.cart-badge').forEach(b => {
+        b.textContent = cart.length;
+        b.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+
+      alert(name + " added to cart!");
+    };
+
+    // Update cart badge on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+      document.querySelectorAll('.cart-badge').forEach(b => {
+        b.textContent = cart.length;
+        b.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+      startCountdowns();
+    });
+  </script>
+</body>
+</html>

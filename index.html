@@ -55,111 +55,99 @@
 <body class="font-sans text-gray-800">
 
        <!-- Preloader Overlay -->
-  <!-- <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+  <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
     <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
-  </div> -->
+  </div>
 
   <!-- Preloder hides -->
    <script>
-    // function hidePreloaderAndInitAOS() {
-    //       const pre = document.getElementById('preloader');
-    //       // duration must match your animation (2.5s) - tweak if you changed that
-    //       const animationWait = 2500;
-    //       if (!pre) {
-    //         // still ensure AOS is available and init
-    //         ensureAOS(initAOS);
-    //         return;
-    //       }
+    function hidePreloaderAndInitAOS() {
+          const pre = document.getElementById('preloader');
+          // duration must match your animation (2.5s) - tweak if you changed that
+          const animationWait = 2500;
+          if (!pre) {
+            // still ensure AOS is available and init
+            ensureAOS(initAOS);
+            return;
+          }
 
           // Wait the animation duration, then fade preloader out and init AOS
-        //   setTimeout(() => {
-        //     pre.style.opacity = '0';
-        //     pre.style.transition = 'opacity 0.6s ease';
-        //     setTimeout(() => {
-        //       pre.style.display = 'none';
-        //       ensureAOS(initAOS);
-        //     }, 600);
-        //   }, animationWait);
-        // }
+          setTimeout(() => {
+            pre.style.opacity = '0';
+            pre.style.transition = 'opacity 0.6s ease';
+            setTimeout(() => {
+              pre.style.display = 'none';
+              ensureAOS(initAOS);
+            }, 600);
+          }, animationWait);
+        }
 
-        // if (document.readyState === 'complete') {
-        //   hidePreloaderAndInitAOS();
-        // } else {
-        //   window.addEventListener('load', hidePreloaderAndInitAOS);
-        // }
+        if (document.readyState === 'complete') {
+          hidePreloaderAndInitAOS();
+        } else {
+          window.addEventListener('load', hidePreloaderAndInitAOS);
+        }
 
       
    </script>
 
 <!-- Nav Bar -->
  <!-- Bigger screens and meduim screens -->
-  <header>
-    <nav>
-      <div class="hidden lg:block ">
-      <div class="container mx-auto px-4 py-4 flex items-center gap-8 border-gray-900">
-        <div class="text-2xl font-bold text-green-600">
-           <div class="inline-block ml-2">
-            <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart Logo" class="w-16 h-12 object-contain inline-block">
-        </div>
-          <a href="index.html">Swift Mart</a>
+ <header class="hidden lg:block border-b">
+    <div class="container mx-auto px-4 py-4 flex items-center gap-8 border-gray-900">
+      <div class="flex items-center gap-3">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart Logo" class="w-16 h-12 object-contain">
+        <a href="index.html" class="text-2xl font-bold text-green-600">Swift Mart</a>
       </div>
-      <div class="inline-block space-x-6 items-center -mt-2">
-          <a href="category.html" class="text-gray-700 font-medium hover:text-green-600 hover:underline">Shop by Category</a>
-          <a href="features.html" class="text-gray-700 font-medium hover:text-green-600 hover:underline">Deals </a>
-          <a href="contact.html" class="text-gray-700 font-medium hover:text-green-600 hover:underline">My list</a>
-        </div>
 
-        <div class="ml-auto flex items-center gap-6 -mt-4">
-          <!-- add to cart logo & user-->
-          <a href="cart.html" class="text-gray-700 hover:text-green-600 relative ">
-            <i class="fa-solid fa-basket-shopping"></i>
-            <span
-              class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
-               <div class="ml-auto mt-">
-          <!-- user logo -->
-          <a href="signup.html" class="text-gray-700 hover:text-green-600">
-            <i class="fa-solid fa-user"></i>
+      <nav class="flex place-self-center space-x-8">
+        <a href="category.html" class="font-medium hover:text-green-600">Shop by Category</a>
+        <a href="features.html" class="font-medium hover:text-green-600">Deals</a>
+        <a href="myitems.html" class="font-medium hover:text-green-600">My List</a>
+      </nav>
 
-             
-        </div>
-        </div>
-        </div>
-       
-    </nav>
+      <div class="ml-auto flex items-center gap-6">
+        <a href="cart.html" class="relative text-2xl hover:text-green-600">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-badge absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+        </a>
+        <a href="signup.html" class="text-2xl hover:text-green-600">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        
+      </div>
+    </div>
   </header>
   <!-- Bigger screens  -->
 
   <!-- Small screens and medium screens & shows the menu links in a bar icon -->
-  <header>
-    <nav>
-      <div class="lg:hidden">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div class="text-2xl font-bold text-green-600">
-            <a href="index.html">
-              <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart Logo" class="w-16 h-12 object-contain inline-block">
-              Swift Mart
-            </a>
-          </div>
-          <div class="flex items-center gap-4">
-            <!-- add to cart logo & user-->
-            <a href="cart.html" class="text-gray-700 hover:text-green-600 relative">
-              <i class="fa-solid fa-basket-shopping"></i>
-              <span
-                class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
-            </a>
-            <!-- user logo -->
-            <a href="signup.html" class="text-gray-700 hover:text-green-600">
-              <i class="fa-solid fa-user"></i>
-            </a>
-            <!-- Menu Icon -->
-            <button id="menu-btn" class="text-gray-700 hover:text-green-600 focus:outline-none">
-              <i class="fa-solid fa-bars fa-lg"></i>
-            </button>
-          </div>
-        </div>
+  <header class="lg:hidden border-b">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Logo" class="w-14 h-10 object-contain">
+        <span class="text-xl font-bold text-green-600">Swift Mart</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="cart.html" class="relative text-2xl hover:text-green-600">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-badge absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+        </a>
+        <a href="signup.html" class="text-2xl hover:text-green-600">
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <button id="menu-btn" class="text-2xl">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
-    </nav>
+    </div>
   </header>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden bg-white shadow-lg lg:hidden">
+    <a href="category.html" class="block py-3 px-6 hover:bg-gray-100">Shop by Category</a>
+    <a href="features.html" class="block py-3 px-6 hover:bg-gray-100">Deals</a>
+    <a href="myitems.html" class="block py-3 px-6 hover:bg-gray-100">My List</a>
+  </div>
   <!-- menu function -->
   <script>
     const menuBtn = document.getElementById('menu-btn');
@@ -179,24 +167,46 @@
     });
   </script>
 
-  <!-- Hero page section-->
-  <section>
-  <div class="relative bg-cover bg-center text-white py-28 " style="background-image: url('images/img2.jpg')">
-    
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    
-    <div class="container mx-auto px-4 text-center relative z-10">
-      <h1 class="text-4xl font-black mb-4">Fresh Gloceries , Delivered Fast</h1>
-      <p class="text-lg mb-8">Your favourite local gloceries store, now online. Quality and Convience at your <br> fingertips.</p>
-      <!-- Search for products -->
-      <div class="mt-8">
-        <input type="text" placeholder="Search for products..." class="w-1/2 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-        <button class="bg-white text-green-600 font-semibold px-4 py-2 rounded-md transition duration-200">Search</button>
-      </div>
+  <!-- HERO SECTION (updated with working search) -->
+<section class="relative bg-cover bg-center text-white py-28" style="background-image: url('images/img2.jpg')">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="container mx-auto px-4 text-center relative z-10">
+    <h1 class="text-4xl md:text-5xl font-black mb-4">Fresh Groceries, Delivered Fast</h1>
+    <p class="text-lg mb-8">Your favorite local grocery store, now online. Quality and convenience at your fingertips.</p>
+
+    <!-- WORKING SEARCH BAR -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-3xl mx-auto">
+      <input 
+        type="text" 
+        id="hero-search" 
+        placeholder="Search for bananas, milk, chicken..." 
+        class="w-full px-6 py-4 text-gray-800 text-lg rounded-xl focus:outline-none focus:ring-4 focus:ring-green-500 transition"
+        autocomplete="off"
+      >
+      <button 
+        id="hero-search-btn"
+        class="bg-green-600 hover:bg-green-700 text-white font-bold px-10 py-4 rounded-xl transition flex items-center gap-3 shadow-lg"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        Search
+      </button>
     </div>
   </div>
 </section>
+
+<!-- SEARCH RESULTS SECTION (appears when you search) -->
+<div id="search-results-section" class="container mx-auto px-4 py-12 hidden">
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="text-3xl font-bold">Search Results for "<span id="search-query"></span>"</h2>
+    <button id="clear-search" class="text-green-600 hover:underline">Clear Search</button>
+  </div>
+  <div id="search-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <!-- Results will appear here -->
+  </div>
+  <p id="no-results" class="text-center text-xl text-gray-500 py-20 hidden">
+    No products found. Try searching for "banana", "milk", "chicken", etc.
+  </p>
+</div>
 
 <!-- Shop by Category -->
  <div>
@@ -256,7 +266,7 @@
   <div>
     <section>
       <h1 class="font-bold font-sans text-1g ml-4 mt-4">Recommended for you</h1>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 p-4">
         <!-- Category 1 -->
          <div class="h-60 p-4 border rounded-md">
           <a href="products.html">
@@ -266,86 +276,62 @@
           <p class="text-left mt-2 font-normal">per 1b</p>
           <p class="text-left mt-2 font-bold">$1.29</p>
           <!-- Add to cart icon-->
-          <div class="flex ml-28 -mt-8">
-            <button data-id="1" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
+          <div class="flex justify-end -mt-8">
+            <button data-id="1" data-name="Organic Bananas" data-price="1.29" data-img="https://i.pinimg.com/736x/67/ff/04/67ff0431ed4ecbf10ebed90c15eb6d0a.jpg"class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
               <i class="fa-solid fa-cart-plus"></i>
             </button>
+            
+            
          </div>
-      </div>
+            </div>
       <!-- Category 2 -->
        <div class="h-60 p-4 border rounded-md">
           <a href="products.html">
-            <img src="https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg" alt="Strawberries" class="w-full h-24 object-cover rounded-md">
+        <img src="https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg" alt="Strawberries" class="w-full h-24 object-cover rounded-md">
           </a>
           <h2 class="text-left mt-2 font-medium">Strawberries</h2>
           <p class="text-left mt-2 font-normal">per 1b</p>
           <p class="text-left mt-2 font-bold">$2.99</p>
           <!-- Add to cart icon-->
-          <div class="flex ml-28 -mt-8">
-            <button data-id="2" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-              <i class="fa-solid fa-cart-plus"></i>
-            </button>
-         </div>
+          <div class="flex justify-end -mt-8">
+       <button data-id="2" data-name="Strawberries" data-price="2.99" data-img="https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg"
+       class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+       <i class="fa-solid fa-cart-plus"></i>
+       </button>
+        </div>
       </div>
       <!-- Category 3 -->
        <div class="h-60 p-4 border rounded-md">
           <a href="products.html">
-            <img src="https://i.pinimg.com/1200x/1d/77/19/1d7719c11f116bddc6a5036b91728b39.jpg" alt="Almond Milk" class="w-full h-24 object-cover rounded-md">
+        <img src="https://i.pinimg.com/1200x/1d/77/19/1d7719c11f116bddc6a5036b91728b39.jpg" alt="Almond Milk" class="w-full h-24 object-cover rounded-md">
           </a>
           <h2 class="text-left mt-2 font-medium">Almond Milk</h2>
           <p class="text-left mt-2 font-normal">per 1L</p>
           <p class="text-left mt-2 font-bold">$3.49</p>
           <!-- Add to cart icon-->
-          <div class="flex ml-28 -mt-8">
-            <button data-id="3" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-              <i class="fa-solid fa-cart-plus"></i>
-            </button>
+          <div class="flex justify-end -mt-8">
+           <button data-id="3" data-name="Almond Milk" data-price="3.49" data-img="https://i.pinimg.com/1200x/1d/77/19/1d7719c11f116bddc6a5036b91728b39.jpg" class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+            <i class="fa-solid fa-cart-plus"></i>
+           </button>
          </div>
       </div>
       <!-- Category 4 -->
         <div class="h-60 p-4 border rounded-md">
-            <a href="products.html">
-              <img src="https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" alt="Chicken Breast" class="w-full h-24 object-cover rounded-md">
-            </a>
-            <h2 class="text-left mt-2 font-medium">Chicken Breast</h2>
-            <p class="text-left mt-2 font-normal">per 1b</p>
-            <p class="text-left mt-2 font-bold">$5.99</p>
-            <!-- Add to cart icon-->
-            <div class="flex ml-28 -mt-8">
-              <button data-id="4" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+        <a href="products.html">
+          <img src="https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" alt="Chicken Breast" class="w-full h-24 object-cover rounded-md">
+        </a>
+        <h2 class="text-left mt-2 font-medium">Chicken Breast</h2>
+        <p class="text-left mt-2 font-normal">per 1b</p>
+        <p class="text-left mt-2 font-bold">$5.99</p>
+        <!-- Add to cart icon-->
+        <div class="flex justify-end -mt-8">
+           <button data-id="4" data-name="Chicken Breast" data-price="5.99" data-img="https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+            <i class="fa-solid fa-cart-plus"></i>
+           </button>
           </div>
         </div>
-      <!-- Category 5 -->
-        <div class="h-60 p-4 border rounded-md">
-            <a href="products.html">
-              <img src="https://i.pinimg.com/1200x/a6/43/b5/a643b528cf48933b9fd8a250687eb307.jpg" alt="Orange Juice" class="w-full h-24 object-cover rounded-md">
-            </a>
-            <h2 class="text-left mt-2 font-medium">Orange Juice</h2>
-            <p class="text-left mt-2 font-normal">per 1L</p>
-            <p class="text-left mt-2 font-bold">$4.29</p>
-            <!-- Add to cart icon-->
-            <div class="flex ml-28 -mt-8">
-              <button data-id="5" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
-          </div>
-        </div>
-      <!-- Category 6 -->
-        <div class="h-60 p-4 border rounded-md">
-            <a href="products.html">
-              <img src="https://i.pinimg.com/1200x/12/81/95/1281953e66f256007e7885b325fb8f66.jpg" alt="Potato Chips" class="w-full h-24 object-cover rounded-md">
-            </a>
-            <h2 class="text-left mt-2 font-medium">Potato Chips</h2>
-            <p class="text-left mt-2 font-normal">per pack</p>
-            <p class="text-left mt-2 font-bold">$1.99</p>
-            <!-- Add to cart icon-->
-            <div class="flex ml-28 -mt-8">
-              <button data-id="6" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
-          </div>
+      
+      </div>
 
     </section>
   </div>
@@ -354,7 +340,7 @@
    <section>
     <div>
       <h1 class="font-bold font-sans text-1g ml-4 mt-4">Trending Near You</h1>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 p-4">
         <!-- Category 1 -->
          <div class="h-60 p-4 border rounded-md">
           <a href="products.html">
@@ -364,14 +350,15 @@
           <p class="text-left mt-2 font-normal">per 1b</p>
           <p class="text-left mt-2 font-bold">$5.29</p>
           <!-- Add to cart icon-->
-          <div class="flex ml-28 -mt-8">
-            <button data-id="1" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-              <i class="fa-solid fa-cart-plus"></i>
-            </button>
+          <div class="flex justify-end -mt-8">
+            <button data-id="5" data-name="Oat Milk" data-price="5.29" data-img="https://i.pinimg.com/736x/ad/8b/42/ad8b42968a7c85d288d4258aad5e0911.jpg" class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+            <i class="fa-solid fa-cart-plus"></i>
+           </button>
+           
          </div>
-      </div>
+            </div>
 
-      <!-- Category 2 -->
+            <!-- Category 2 -->
         <div class="h-60 p-4 border rounded-md">
             <a href="products.html">
               <img src="https://i.pinimg.com/1200x/2a/9e/f3/2a9ef3385919f75bb6b9ca3cbe561ef5.jpg" alt="Grapes" class="w-full h-24 object-cover rounded-md">
@@ -380,31 +367,229 @@
             <p class="text-left mt-2 font-normal">per 1b</p>
             <p class="text-left mt-2 font-bold">$2.49</p>
             <!-- Add to cart icon-->
-            <div class="flex ml-28 -mt-8">
-              <button data-id="2" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+            <div class="flex justify-end -mt-8">
+              <button data-id="6" data-name="Grapes" data-price="2.49" data-img="https://i.pinimg.com/1200x/2a/9e/f3/2a9ef3385919f75bb6b9ca3cbe561ef5.jpg" class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+            <i class="fa-solid fa-cart-plus"></i>
+           </button>
           </div>
 
-    </div>
-    <!-- category 3 -->
+          </div>
+          <!-- category 3 -->
         <div class="h-60 p-4 border rounded-md">
             <a href="products.html">
-              <img src="https://i.pinimg.com/1200x/ae/1b/7e/ae1b7e2f3f3f4f4f4f4f4f4f4f4f4f4f.jpg" alt="Yogurt" class="w-full h-24 object-cover rounded-md">
+              <img src="https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg" alt="Yogurt" class="w-full h-24 object-cover rounded-md">
             </a>
             <h2 class="text-left mt-2 font-medium">Yogurt</h2>
             <p class="text-left mt-2 font-normal">per 1b</p>
             <p class="text-left mt-2 font-bold">$0.99</p>
             <!-- Add to cart icon-->
-            <div class="flex ml-28 -mt-8">
-              <button data-id="3" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 transition duration-200">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+            <div class="flex justify-end -mt-8">
+             <button data-id="7" data-name="Yogurt" data-price="0.99" data-img="https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg" class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+            <i class="fa-solid fa-cart-plus"></i>
+           </button>
           </div>
         </div>
 
+        <!-- Category 4 -->
+        <div class="h-60 p-4 border rounded-md">
+            <a href="products.html">
+              <img src="https://i.pinimg.com/1200x/d9/f6/81/d9f6817169c42d2b7af0074a78c6b783.jpg" alt="Salmon Fillet" class="w-full h-24 object-cover rounded-md">
+            </a>
+            <h2 class="text-left mt-2 font-medium">Salmon Fillet</h2>
+            <p class="text-left mt-2 font-normal">per 1b</p>
+            <p class="text-left mt-2 font-bold">$8.99</p>
+            <!-- Add to cart icon-->
+            <div class="flex justify-end -mt-8">
+               <button data-id="7" data-name="salmon Fillet" data-price="8.99" data-img="https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg" class="add-to-cart-btn bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
+            <i class="fa-solid fa-cart-plus"></i>
+           </button>
+          </div>
+        </div>
+
+      </div>
    </section>
 
-<script src="style.js"></script>
+   <!-- Footer -->
+    <footer>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="flex flex-col items-center justify-center p-4">
+          <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Shop Logo" class="w-24 h-16 object-contain mb-4">
+         </div>
+
+         <!-- Ccompany -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Company</h3>
+            <a href="about.html" class="text-gray-600 hover:text-green-600 mb-1">About Us</a>
+            <a href="careers.html" class="text-gray-600 hover:text-green-600 mb-1">Careers</a>
+            <a href="blog.html" class="text-gray-600 hover:text-green-600 mb-1">Blog</a>
+          </div>
+
+          <!-- Support -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Support</h3>
+            <a href="help.html" class="text-gray-600 hover:text-green-600 mb-1">Help Center</a>
+            <a href="contact.html" class="text-gray-600 hover:text-green-600 mb-1">Contact Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-green-600 mb-1">FAQ</a>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Newsletter</h3>
+            <p class="text-gray-600 mb-2">Subscribe to our newsletter for the latest updates.</p>
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 mb-2">
+            <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Subscribe</button>
+
+
+
+      </div>
+    </footer>
+
+    <!-- cart logic -->
+    <script>
+      let cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+
+      function updateCartBadge() {
+      const badges = document.querySelectorAll('.cart-badge');
+      badges.forEach(badge => {
+        badge.textContent = cart.length;
+        badge.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+    }
+
+    function addToCart(id, name, price, img) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price: parseFloat(price), img, quantity: 1 });
+      }
+      localStorage.setItem('swiftCart', JSON.stringify(cart));
+      updateCartBadge();
+      alert(`${name} added to cart!`);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+
+      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          const name = btn.dataset.name;
+          const price = btn.dataset.price;
+          const img = btn.dataset.img;
+          addToCart(id, name, price, img);
+        });
+      });
+    });
+
+
+    </script>
+
+    <script>
+// === ALL PRODUCTS DATABASE (add as many as you want) ===
+const allProducts = [
+  { id: "1", name: "Organic Bananas", price: 1.29, img: "https://i.pinimg.com/736x/67/ff/04/67ff0431ed4ecbf10ebed90c15eb6d0a.jpg" },
+  { id: "2", name: "Strawberries", price: 2.99, img: "https://i.pinimg.com/736x/93/87/99/938799507c4823888801346a404074dc.jpg" },
+  { id: "3", name: "Almond Milk", price: 3.49, img: "https://i.pinimg.com/1200x/1d/77/19/1d7719c11f116bddc6a5036b91728b39.jpg" },
+  { id: "4", name: "Chicken Breast", price: 5.99, img: "https://i.pinimg.com/1200x/0e/0d/86/0e0d8684260541ede826a217690c6467.jpg" },
+  { id: "5", name: "Oat Milk", price: 5.29, img: "https://i.pinimg.com/736x/ad/8b/42/ad8b42968a7c85d288d4258aad5e0911.jpg" },
+  { id: "6", name: "Grapes", price: 2.49, img: "https://i.pinimg.com/1200x/2a/9e/f3/2a9ef3385919f75bb6b9ca3cbe561ef5.jpg" },
+  { id: "7", name: "Yogurt", price: 0.99, img: "https://i.pinimg.com/1200x/a8/ad/5d/a8ad5da2c0edf8b9a225ff04a0cb47c3.jpg" },
+  { id: "8", name: "Salmon Fillet", price: 8.99, img: "https://i.pinimg.com/1200x/d9/f6/81/d9f6817169c42d2b7af0074a78c6b783.jpg" },
+  { id: "10", name: "Bread", price: 2.49, img: "https://i.pinimg.com/736x/1e/77/a1/1e77a1f4e04d9726a1dfaab42bacd7b6.jpg" },
+  // Add more products here!
+];
+
+// === SEARCH FUNCTION ===
+function doSearch() {
+  const query = document.getElementById('hero-search').value.trim().toLowerCase();
+  if (query.length < 2) return;
+
+  const results = allProducts.filter(p => 
+    p.name.toLowerCase().includes(query)
+  );
+
+  const section = document.getElementById('search-results-section');
+  const grid = document.getElementById('search-grid');
+  const noResults = document.getElementById('no-results');
+  const querySpan = document.getElementById('search-query');
+
+  grid.innerHTML = '';
+  querySpan.textContent = query;
+
+  if (results.length === 0) {
+    noResults.classList.remove('hidden');
+    section.classList.remove('hidden');
+    return;
+  }
+
+  noResults.classList.add('hidden');
+  section.classList.remove('hidden');
+
+  results.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2';
+    card.innerHTML = `
+      <img src="${product.img}" alt="${product.name}" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="font-bold text-lg">${product.name}</h3>
+        <div class="flex justify-between items-center mt-4">
+          <span class="text-2xl font-bold text-green-600">$${product.price}</span>
+          <button 
+            onclick="addToCart('${product.id}', '${product.name}', '${product.price}', '${product.img}')"
+            class="bg-green-600 text-white w-12 h-12 rounded-full hover:bg-green-700 transition flex items-center justify-center"
+          >
+            <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Scroll to results
+  section.scrollIntoView({ behavior: 'smooth' });
+}
+
+// === EVENT LISTENERS ===
+document.getElementById('hero-search-btn').addEventListener('click', doSearch);
+document.getElementById('hero-search').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') doSearch();
+});
+
+document.getElementById('clear-search').addEventListener('click', () => {
+  document.getElementById('hero-search').value = '';
+  document.getElementById('search-results-section').classList.add('hidden');
+});
+
+// Reuse your existing addToCart function (make sure it's global)
+window.addToCart = function(id, name, price, img) {
+  let cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id, name, price: parseFloat(price), img, quantity: 1 });
+  }
+  localStorage.setItem('swiftCart', JSON.stringify(cart));
+
+  // Update cart badge
+  const badges = document.querySelectorAll('.cart-badge');
+  badges.forEach(b => {
+    b.textContent = cart.length;
+    b.style.display = cart.length > 0 ? 'flex' : 'none';
+  });
+
+  alert(name + " added to cart!");
+};
+</script>
+
+
+
+    
+
+
+
 </body>
 </html>
