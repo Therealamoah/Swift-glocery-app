@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Swift Mart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .blog-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+    .read-more { display: none; }
+    .read-more.active { display: block; }
+  </style>
+  <style>
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* start from right */
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(0);
+        /* center */
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* fade left */
+      }
+    }
+
+    .animate-slidefade {
+      animation: slidefade 2.5s ease forwards;
+    }
+  </style>
+
+</head>
+<body class="bg-gray-50">
+     <!-- Preloader Overlay -->
+  <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+    <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
+  </div>
+
+  <!-- Preloder hides -->
+   <script>
+    function hidePreloaderAndInitAOS() {
+          const pre = document.getElementById('preloader');
+          // duration must match your animation (2.5s) - tweak if you changed that
+          const animationWait = 2500;
+          if (!pre) {
+            // still ensure AOS is available and init
+            ensureAOS(initAOS);
+            return;
+          }
+
+          // Wait the animation duration, then fade preloader out and init AOS
+          setTimeout(() => {
+            pre.style.opacity = '0';
+            pre.style.transition = 'opacity 0.6s ease';
+            setTimeout(() => {
+              pre.style.display = 'none';
+              ensureAOS(initAOS);
+            }, 600);
+          }, animationWait);
+        }
+
+        if (document.readyState === 'complete') {
+          hidePreloaderAndInitAOS();
+        } else {
+          window.addEventListener('load', hidePreloaderAndInitAOS);
+        }
+
+      
+   </script>
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow-sm border-b sticky top-0 z-40">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart" class="w-14 h-12 object-contain">
+        <span class="text-2xl font-bold text-green-600">Swift Mart</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="font-medium hover:text-green-600">Home</a>
+        <a href="category.html" class="font-medium hover:text-green-600">Categories</a>
+        <a href="features.html" class="font-medium hover:text-green-600">Deals</a>
+        <a href="myitems.html" class="font-medium hover:text-green-600">My List</a>
+        <a href="blog.html" class="font-bold text-green-600 underline">Blog</a>
+      </nav>
+
+      <div class="flex items-center gap-6">
+        <a href="cart.html" class="relative text-2xl hover:text-green-600">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-badge absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">0</span>
+        </a>
+        <a href="signup.html" class="text-2xl hover:text-green-600"><i class="fa-solid fa-user"></i></a>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden border-b">
+    <a href="index.html" class="block py-3 px-6 hover:bg-gray-100">Home</a>
+    <a href="category.html" class="block py-3 px-6 hover:bg-gray-100">Categories</a>
+    <a href="deals.html" class="block py-3 px-6 hover:bg-gray-100">Deals</a>
+    <a href="myitems.html" class="block py-3 px-6 hover:bg-gray-100">My List</a>
+    <a href="blog.html" class="block py-3 px-6 bg-green-50 font-bold">Blog</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-green-600 to-emerald-700 text-white py-32">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-7xl font-black mb-6">Swift Mart Blog</h1>
+      <p class="text-2xl max-w-3xl mx-auto opacity-90">
+        Fresh recipes, grocery tips, behind-the-scenes stories & more
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOG POSTS GRID -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="grid lg:grid-cols-3 gap-10">
+
+        <!-- Post 1 -->
+        <article class="blog-card bg-white rounded-2xl shadow-xl overflow-hidden transition">
+          <img src="https://www.naturemade.com/cdn/shop/articles/how-to-eat-healthy_960x.jpg?v=1611987977" alt="Healthy Eating" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+              <span><i class="fa-solid fa-calendar"></i> Dec 3, 2025</span>
+              <span><i class="fa-solid fa-clock"></i> 4 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4">10 Healthy Breakfast Ideas Under 10 Minutes</h2>
+            <p class="text-gray-600 mb-6">
+              Start your day right with these quick, nutritious breakfast recipes using ingredients you already have...
+            </p>
+            <button onclick="toggleReadMore(this)" class="text-green-600 font-bold hover:underline flex items-center gap-2">
+              Read More <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <div class="read-more mt-6 pt-6 border-t">
+              <p class="text-gray-600 mb-4">
+                From overnight oats to avocado toast upgrades, these meals are packed with protein, fiber, and flavor. 
+                Perfect for busy mornings!
+              </p>
+              <p class="text-gray-600">
+                Pro tip: Add Swift Mart’s fresh eggs and Greek yogurt to your next order for the ultimate breakfast combo.
+              </p>
+            </div>
+            <div class="flex gap-2 mt-6">
+              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Recipes</span>
+              <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">Healthy</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card bg-white rounded-2xl shadow-xl overflow-hidden transition">
+          <img src="https://zeew.eu/wp-content/uploads/2024/07/Develop-a-Food-Delivery-Service-App-like-Just-Eat-UK-1024x681-1.png" alt="Delivery" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+              <span><i class="fa-solid fa-calendar"></i> Nov 28, 2025</span>
+              <span><i class="fa-solid fa-clock"></i> 3 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4">How We Deliver Fresh in 60 Minutes</h2>
+            <p class="text-gray-600 mb-6">
+              Ever wondered how your groceries stay fresh from store to door? Here’s the magic behind our lightning-fast delivery...
+            </p>
+            <button onclick="toggleReadMore(this)" class="text-green-600 font-bold hover:underline flex items-center gap-2">
+              Read More <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <div class="read-more mt-6 pt-6 border-t">
+              <p class="text-gray-600">
+                From temperature-controlled vans to smart routing AI, we’ve invested in tech and care to bring you the freshest produce possible.
+              </p>
+            </div>
+            <div class="flex gap-2 mt-6">
+              <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">Behind the Scenes</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card bg-white rounded-2xl shadow-xl overflow-hidden transition">
+          <img src="https://cdn.modernghana.com/content__/640/457/1129201773123_farmers1.jpg" alt="Farmers" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+              <span><i class="fa-solid fa-calendar"></i> Nov 20, 2025</span>
+              <span><i class="fa-solid fa-clock"></i> 5 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4">Meet the Farmers Behind Your Fruits</h2>
+            <p class="text-gray-600 mb-6">
+              We partner directly with local farmers to bring you the freshest, sweetest produce. Here are their stories...
+            </p>
+            <button onclick="toggleReadMore(this)" class="text-green-600 font-bold hover:underline flex items-center gap-2">
+              Read More <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <div class="read-more mt-6 pt-6 border-t">
+              <p class="text-gray-600">
+                From mango farms in the north to vegetable growers in Ashanti region — every fruit has a face and a story.
+              </p>
+            </div>
+            <div class="flex gap-2 mt-6">
+              <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-sm">Community</span>
+              <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">Sustainability</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Add more blog posts here -->
+      </div>
+
+      
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE NEWSLETTER -->
+  <section class="py-20 bg-gradient-to-r from-green-600 to-teal-600 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-6">Never Miss a Recipe</h2>
+      <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">
+        Get weekly recipes, grocery tips, and exclusive deals straight to your inbox.
+      </p>
+      <div class="max-w-md mx-auto flex gap-4">
+        <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-4 focus:ring-white/30">
+        <button class="bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition font-bold">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="flex flex-col items-center justify-center p-4">
+          <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Shop Logo" class="w-24 h-16 object-contain mb-4">
+         </div>
+
+         <!-- Ccompany -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Company</h3>
+            <a href="about.html" class="text-gray-600 hover:text-green-600 mb-1">About Us</a>
+            <a href="careers.html" class="text-gray-600 hover:text-green-600 mb-1">Careers</a>
+            <a href="blog.html" class="text-gray-600 hover:text-green-600 mb-1">Blog</a>
+          </div>
+
+          <!-- Support -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Support</h3>
+            <a href="help.html" class="text-gray-600 hover:text-green-600 mb-1">Help Center</a>
+            <a href="contact.html" class="text-gray-600 hover:text-green-600 mb-1">Contact Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-green-600 mb-1">FAQ</a>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Newsletter</h3>
+            <p class="text-gray-600 mb-2">Subscribe to our newsletter for the latest updates.</p>
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 mb-2">
+            <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Subscribe</button>
+
+
+
+      </div>
+    </footer>
+
+
+  
+
+  <script>
+    // Mobile Menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Cart Badge
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+      document.querySelectorAll('.cart-badge').forEach(badge => {
+        badge.textContent = cart.length;
+        badge.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+    });
+
+    // Read More Toggle
+    function toggleReadMore(btn) {
+      const card = btn.closest('article');
+      const content = card.querySelector('.read-more');
+      const isActive = content.classList.contains('active');
+      
+      // Close all others first
+      document.querySelectorAll('.read-more').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('button[onclick="toggleReadMore(this)"]').forEach(b => {
+        b.innerHTML = 'Read More <i class="fa-solid fa-arrow-right"></i>';
+      });
+
+      // Toggle current
+      if (!isActive) {
+        content.classList.add('active');
+        btn.innerHTML = 'Show Less <i class="fa-solid fa-arrow-up"></i>';
+      }
+    }
+  </script>
+</body>
+</html>

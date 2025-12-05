@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers - Join Swift Mart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .job-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
+    .counter { font-weight: 800; font-size: 4.5rem; line-height: 1; }
+    @media (max-width: 768px) { .counter { font-size: 3.5rem; } }
+  </style>
+  <style>
+    @keyframes slidefade {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+        /* start from right */
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateX(0);
+        /* center */
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* fade left */
+      }
+    }
+
+    .animate-slidefade {
+      animation: slidefade 2.5s ease forwards;
+    }
+  </style>
+
+</head>
+<body class="bg-gray-50">
+
+    <!-- Preloader Overlay -->
+  <div id="preloader" class="fixed inset-0 bg-slate-100 flex items-center justify-center z-50">
+    <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Logo" class="w-32 h-32 object-contain animate-slidefade" />
+  </div>
+
+  <!-- Preloder hides -->
+   <script>
+    function hidePreloaderAndInitAOS() {
+          const pre = document.getElementById('preloader');
+          // duration must match your animation (2.5s) - tweak if you changed that
+          const animationWait = 2500;
+          if (!pre) {
+            // still ensure AOS is available and init
+            ensureAOS(initAOS);
+            return;
+          }
+
+          // Wait the animation duration, then fade preloader out and init AOS
+          setTimeout(() => {
+            pre.style.opacity = '0';
+            pre.style.transition = 'opacity 0.6s ease';
+            setTimeout(() => {
+              pre.style.display = 'none';
+              ensureAOS(initAOS);
+            }, 600);
+          }, animationWait);
+        }
+
+        if (document.readyState === 'complete') {
+          hidePreloaderAndInitAOS();
+        } else {
+          window.addEventListener('load', hidePreloaderAndInitAOS);
+        }
+
+      
+   </script>
+
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow-sm border-b sticky top-0 z-40">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Swift Mart" class="w-14 h-12 object-contain">
+        <span class="text-2xl font-bold text-green-600">Swift Mart</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="font-medium hover:text-green-600">Home</a>
+        <a href="category.html" class="font-medium hover:text-green-600">Categories</a>
+        <a href="deals.html" class="font-medium hover:text-green-600">Deals</a>
+        <a href="myitems.html" class="font-medium hover:text-green-600">My List</a>
+        <a href="career.html" class="font-bold text-green-600 underline">Careers</a>
+      </nav>
+
+      <div class="flex items-center gap-6">
+        <a href="cart.html" class="relative text-2xl hover:text-green-600">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span class="cart-badge absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">0</span>
+        </a>
+        <a href="signup.html" class="text-2xl hover:text-green-600"><i class="fa-solid fa-user"></i></a>
+        <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden bg-white shadow-lg md:hidden border-b">
+    <a href="index.html" class="block py-3 px-6 hover:bg-gray-100">Home</a>
+    <a href="category.html" class="block py-3 px-6 hover:bg-gray-100">Categories</a>
+    <a href="deals.html" class="block py-3 px-6 hover:bg-gray-100">Deals</a>
+    <a href="myitems.html" class="block py-3 px-6 hover:bg-gray-100">My List</a>
+    <a href="career.html" class="block py-3 px-6 bg-green-50 font-bold">Careers</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-r from-green-600 to-teal-600 text-white py-32">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-7xl font-black mb-6">Join Our Team</h1>
+      <p class="text-2xl md:text-3xl max-w-4xl mx-auto opacity-90">
+        Help us deliver happiness, one grocery bag at a time
+      </p>
+      <div class="mt-10">
+        <a href="#jobs" class="bg-white text-green-600 px-10 py-5 rounded-full text-xl font-bold hover:bg-gray-100 transition transform hover:scale-110 shadow-2xl inline-flex items-center gap-3">
+          See Open Positions <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY JOIN US -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16">Why Work at Swift Mart?</h2>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-users text-5xl text-green-600"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Amazing Team</h3>
+          <p class="text-gray-600">Work with passionate, fun, and talented people who care.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-seedling text-5xl text-blue-600"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Growth Opportunities</h3>
+          <p class="text-gray-600">Fast-growing startup = big opportunities to learn and lead.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-gift text-5xl text-purple-600"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4">Great Benefits</h3>
+          <p class="text-gray-600">Competitive salary, health insurance, free groceries & more!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS (Animated!) -->
+  <section class="py-20 bg-green-700 text-white" id="stats-section">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+        <div>
+          <h3 class="counter" data-target="150" data-suffix="+">0</h3>
+          <p class="text-xl mt-2 opacity-90">Team Members</p>
+        </div>
+        <div>
+          <h3 class="counter" data-target="15" data-suffix="+">0</h3>
+          <p class="text-xl mt-2 opacity-90">Cities</p>
+        </div>
+        <div>
+          <h3 class="counter" data-target="4" data-suffix=".9">0</h3>
+          <p class="text-xl mt-2 opacity-90">Employee Rating</p>
+        </div>
+        <div>
+          <h3 class="counter" data-target="100" data-suffix="%">0%</h3>
+          <p class="text-xl mt-2 opacity-90">Love Their Job</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN POSITIONS -->
+  <section class="py-20 bg-gray-50" id="jobs">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16">Open Positions</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        <div class="job-card bg-white rounded-2xl shadow-xl p-8 transition">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3 class="text-2xl font-bold">Delivery Driver</h3>
+              <p class="text-green-600 font-semibold">Full Time • Accra</p>
+            </div>
+            <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold">Hiring Now</span>
+          </div>
+          <p class="text-gray-600 mb-6">Join our fleet and deliver smiles! Must have bike/car + valid license.</p>
+          <ul class="space-y-2 text-gray-600 mb-8">
+            <li>GH₵2,500–4,000/month</li>
+            <li>Fuel allowance + tips</li>
+            <li>Flexible hours</li>
+          </ul>
+          <button onclick="openApplication('Delivery Driver')" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition">
+            Apply Now
+          </button>
+        </div>
+
+        <div class="job-card bg-white rounded-2xl shadow-xl p-8 transition">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3 class="text-2xl font-bold">Customer Support</h3>
+              <p class="text-green-600 font-semibold">Remote • Full Time</p>
+            </div>
+            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-bold">Remote OK</span>
+          </div>
+          <p class="text-gray-600 mb-6">Be the voice of Swift Mart. Help customers with love & patience.</p>
+          <ul class="space-y-2 text-gray-600 mb-8">
+            <li>GH₵2,000–3,500/month</li>
+            <li>Work from home</li>
+            <li>Training provided</li>
+          </ul>
+          <button onclick="openApplication('Customer Support')" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition">
+            Apply Now
+          </button>
+        </div>
+
+        <div class="job-card bg-white rounded-2xl shadow-xl p-8 transition">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h3 class="text-2xl font-bold">Warehouse Staff</h3>
+              <p class="text-green-600 font-semibold">Full Time • Kumasi</p>
+            </div>
+            <span class="bg-orange-100 text-orange-700 px-4 py-2 rounded-full font-bold">Urgent</span>
+          </div>
+          <p class="text-gray-600 mb-6">Keep our inventory fresh and organized. Physical work with great team.</p>
+          <ul class="space-y-2 text-gray-600 mb-8">
+            <li>GH₵1,800–2,800/month</li>
+            <li>Free lunch</li>
+            <li>Gym membership</li>
+          </ul>
+          <button onclick="openApplication('Warehouse Staff')" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition">
+            Apply Now
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM (Modal) -->
+  <div id="apply-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-10 max-w-2xl w-full max-h-screen overflow-y-auto">
+      <h2 class="text-3xl font-bold mb-6">Apply for <span id="job-title" class="text-green-600"></span></h2>
+      <form id="apply-form">
+        <div class="grid grid-cols-2 gap-6 mb-6">
+          <input type="text" placeholder="Full Name" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+          <input type="email" placeholder="Email" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+          <input type="tel" placeholder="Phone Number" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+          <input type="text" placeholder="Location" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+        </div>
+        <textarea placeholder="Why do you want to join Swift Mart?" rows="5" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 mb-6"></textarea>
+        <input type="file" accept=".pdf,.doc,.docx" class="w-full mb-6">
+        <div class="flex gap-4">
+          <button type="submit" class="flex-1 bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition">
+            Submit Application
+          </button>
+          <button type="button" onclick="document.getElementById('apply-modal').classList.add('hidden')" class="px-8 py-4 border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <!-- Category 1 -->
+         <div class="flex flex-col items-center justify-center p-4">
+          <img src="images/ChatGPT Image Dec 1, 2025, 04_43_01 PM.png" alt="Shop Logo" class="w-24 h-16 object-contain mb-4">
+         </div>
+
+         <!-- Ccompany -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Company</h3>
+            <a href="about.html" class="text-gray-600 hover:text-green-600 mb-1">About Us</a>
+            <a href="careers.html" class="text-gray-600 hover:text-green-600 mb-1">Careers</a>
+            <a href="blog.html" class="text-gray-600 hover:text-green-600 mb-1">Blog</a>
+          </div>
+
+          <!-- Support -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Support</h3>
+            <a href="help.html" class="text-gray-600 hover:text-green-600 mb-1">Help Center</a>
+            <a href="contact.html" class="text-gray-600 hover:text-green-600 mb-1">Contact Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-green-600 mb-1">FAQ</a>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <h3 class="font-bold mb-2">Newsletter</h3>
+            <p class="text-gray-600 mb-2">Subscribe to our newsletter for the latest updates.</p>
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 mb-2">
+            <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200">Subscribe</button>
+
+
+
+      </div>
+    </footer>
+
+
+  <script>
+    // Mobile Menu
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Cart Badge
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('swiftCart')) || [];
+      document.querySelectorAll('.cart-badge').forEach(badge => {
+        badge.textContent = cart.length;
+        badge.style.display = cart.length > 0 ? 'flex' : 'none';
+      });
+    });
+
+    // Open Application Modal
+    function openApplication(jobName) {
+      document.getElementById('job-title').textContent = jobName;
+      document.getElementById('apply-modal').classList.remove('hidden');
+    }
+
+    // Form Submit (Demo)
+    document.getElementById('apply-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Thank you! Your application has been submitted. We'll contact you soon!");
+      document.getElementById('apply-modal').classList.add('hidden');
+      e.target.reset();
+    });
+
+    // Animated Counters
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.counter').forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 2500;
+            const steps = 100;
+            const inc = target / steps;
+            let curr = 0;
+
+            const timer = setInterval(() => {
+              curr += inc;
+              if (curr >= target) {
+                counter.textContent = (suffix === '%' ? target + '%' : target.toLocaleString() + suffix);
+                clearInterval(timer);
+              } else {
+                const val = suffix === '%' ? Math.floor(curr) + '%' : Math.floor(curr).toLocaleString() + suffix;
+                counter.textContent = val;
+              }
+            }, duration / steps);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(document.getElementById('stats-section'));
+  </script>
+</body>
+</html>
